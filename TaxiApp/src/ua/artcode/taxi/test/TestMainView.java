@@ -5,7 +5,7 @@ import ua.artcode.taxi.dao.UserDaoInnerDbImpl;
 import ua.artcode.taxi.service.UserServiceImpl;
 import ua.artcode.taxi.view.MainTaxi;
 
-public class testMainView {
+public class TestMainView {
 
 
     public static void main(String[] args) {
