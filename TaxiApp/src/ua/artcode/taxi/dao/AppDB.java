@@ -1,6 +1,5 @@
 package ua.artcode.taxi.dao;
 
-import ua.artcode.taxi.model.Driver;
 import ua.artcode.taxi.model.Order;
 import ua.artcode.taxi.model.User;
 
@@ -16,12 +15,18 @@ public class AppDB {
     private List<Order> orders;
     private List<Driver> drivers;
 
+//    public AppDB() {
+//        users = new ArrayList<>();
+//        orders = new ArrayList<>();
+//        drivers = new ArrayList<>();
+//    }
 
     public AppDB(List<User> users, List<Order> orders, List<Driver> drivers) {
         this.users = users;
         this.orders = orders;
         this.drivers = drivers;
     }
+
 
     public User addUser(User user){
         user.setId(userIdCounter++);
@@ -86,5 +91,10 @@ public class AppDB {
 
     public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
+    }
+
+    public Driver addDriver(Driver driver) {
+
+        return null;
     }
 }
