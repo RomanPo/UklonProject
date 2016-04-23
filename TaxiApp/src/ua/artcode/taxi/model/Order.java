@@ -1,7 +1,5 @@
 package ua.artcode.taxi.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * Created by serhii on 23.04.16.
@@ -20,7 +18,7 @@ public class Order {
 
     private int price;
 
-    private LocalDateTime makeOrderTime;
+   // private LocalDateTime makeOrderTime;
 
     private OrderStatus orderStatus;
 
@@ -75,13 +73,13 @@ public class Order {
         this.price = price;
     }
 
-    public LocalDateTime getMakeOrderTime() {
-        return makeOrderTime;
-    }
-
-    public void setMakeOrderTime(LocalDateTime makeOrderTime) {
-        this.makeOrderTime = makeOrderTime;
-    }
+//    public LocalDateTime getMakeOrderTime() {
+//        return makeOrderTime;
+//    }
+//
+//    public void setMakeOrderTime(LocalDateTime makeOrderTime) {
+//        this.makeOrderTime = makeOrderTime;
+//    }
 
     public OrderStatus getOrderStatus() {
         return orderStatus;
@@ -100,7 +98,7 @@ public class Order {
                 ", user=" + user +
                 ", driver=" + driver +
                 ", price=" + price +
-                ", makeOrderTime=" + makeOrderTime +
+                //", makeOrderTime=" + makeOrderTime +
                 ", orderStatus=" + orderStatus +
                 '}';
     }
