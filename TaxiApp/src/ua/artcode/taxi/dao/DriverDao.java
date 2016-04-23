@@ -1,5 +1,6 @@
 package ua.artcode.taxi.dao;
 
+import ua.artcode.taxi.model.Driver;
 import ua.artcode.taxi.model.Order;
 
 import java.util.List;

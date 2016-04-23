@@ -1,5 +1,6 @@
 package ua.artcode.taxi.dao;
 
+import ua.artcode.taxi.model.Driver;
 import ua.artcode.taxi.model.Order;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 /**
  * Created by tos on 4/23/16.
  */
-public class DriverDaoInnerDblImpl implements DriverDao {
+public class DriverDaoInnerDbImpl implements DriverDao {
 
     private AppDB appDB;
 
@@ -17,7 +18,7 @@ public class DriverDaoInnerDblImpl implements DriverDao {
 
     @Override
     public Driver create(Driver driver) {
-        return appDB.addUser(driver);
+        return appDB.addDriver(driver);
     }
     @Override
     public String getDriverLocation() {
