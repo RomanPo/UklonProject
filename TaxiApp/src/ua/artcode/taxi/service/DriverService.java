@@ -1,5 +1,8 @@
 package ua.artcode.taxi.service;
 
+import ua.artcode.taxi.model.Driver;
+import ua.artcode.taxi.model.Message;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Роман
@@ -8,4 +11,7 @@ package ua.artcode.taxi.service;
  * To change this template use File | Settings | File Templates.
  */
 public interface DriverService {
+    Message register(Driver driver);
+    String login(Driver driver);
+
 }

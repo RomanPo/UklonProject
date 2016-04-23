@@ -1,5 +1,7 @@
 package ua.artcode.taxi.dao;
 
+import ua.artcode.taxi.model.Order;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Роман
@@ -9,5 +11,7 @@ package ua.artcode.taxi.dao;
  */
 public interface OrderDao {
 
-
+    Order createOrder(long orderId);
+    Order cancelOrder(long orderId);
+    Order updateOrder(long orderId);
 }

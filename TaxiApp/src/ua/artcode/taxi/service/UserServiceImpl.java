@@ -4,9 +4,7 @@ import ua.artcode.taxi.dao.UserDao;
 import ua.artcode.taxi.exception.OrderMakeException;
 import ua.artcode.taxi.exception.OrderNotFoundException;
 import ua.artcode.taxi.exception.RegisterException;
-import ua.artcode.taxi.model.Message;
-import ua.artcode.taxi.model.Order;
-import ua.artcode.taxi.model.User;
+import ua.artcode.taxi.model.*;
 
 import javax.security.auth.login.LoginException;
 import java.util.ArrayList;
@@ -21,6 +19,7 @@ public class UserServiceImpl implements UserService{
     private UserDao userDao;
 
     private List<String> accessKeys = new ArrayList<>();
+    private List<String> orederIds = new ArrayList<>();
 
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -56,9 +55,20 @@ public class UserServiceImpl implements UserService{
         return accessKey;
     }
 
+
+
     @Override
-    public Order makeOrder(String accessToken, String from, String to) throws OrderMakeException {
-        return null;
+    public Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException {
+        if (!accessToken.equals(null)){
+            Order order = new Order();
+            order.setId(System.currentTimeMillis());
+            order.setFrom(from);
+            order.setTo(to);
+            order.setOrderStatus(OrderStatus.NEW);
+            order.setPrice(Calculator.calculateThePrice(order)); // find out how to implement
+            //order.setUser(userDao.findById());
+        }
+    return null;
     }
 
     @Override

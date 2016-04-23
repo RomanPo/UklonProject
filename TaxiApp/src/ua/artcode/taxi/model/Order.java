@@ -14,7 +14,7 @@ public class Order {
 
     private User user;
 
-    private User driver;
+    private Driver driver;
 
     private int price;
 
@@ -57,11 +57,11 @@ public class Order {
         this.user = user;
     }
 
-    public User getDriver() {
+    public Driver getDriver() {
         return driver;
     }
 
-    public void setDriver(User driver) {
+    public void setDriver(Driver driver) {
         this.driver = driver;
     }
 

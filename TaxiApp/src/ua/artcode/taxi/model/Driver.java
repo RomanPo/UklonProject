@@ -14,7 +14,7 @@ public class Driver {
     Car car;
     String name;
 
-    public Driver(String phone) {
+    public Driver() {
 
     }
 

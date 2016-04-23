@@ -1,5 +1,7 @@
 package ua.artcode.taxi.exception;
 
+import ua.artcode.taxi.model.User;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Роман
@@ -7,5 +9,5 @@ package ua.artcode.taxi.exception;
  * Time: 23:38
  * To change this template use File | Settings | File Templates.
  */
-public class UserNotFoundException {
+public class UserNotFoundException extends User {
 }
