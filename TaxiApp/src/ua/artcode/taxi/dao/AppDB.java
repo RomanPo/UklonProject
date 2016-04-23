@@ -15,11 +15,11 @@ public class AppDB {
     private List<Order> orders;
     private List<User> drivers;
 
-    public AppDB() {
-        users = new ArrayList<>();
-        orders = new ArrayList<>();
-        drivers = new ArrayList<>();
-    }
+//    public AppDB() {
+//        users = new ArrayList<>();
+//        orders = new ArrayList<>();
+//        drivers = new ArrayList<>();
+//    }
 
 
 
