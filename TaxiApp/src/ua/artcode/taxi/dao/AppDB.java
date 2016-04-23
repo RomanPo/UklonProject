@@ -13,7 +13,7 @@ public class AppDB {
     private static long orderIdCounter;
     private List<User> users;
     private List<Order> orders;
-    private List<User> drivers;
+    private List<Driver> drivers;
 
     public AppDB() {
         users = new ArrayList<>();
@@ -80,11 +80,11 @@ public class AppDB {
         this.orders = orders;
     }
 
-    public List<User> getDrivers() {
+    public List<Driver> getDrivers() {
         return drivers;
     }
 
-    public void setDrivers(List<User> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
     }
 }
