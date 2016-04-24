@@ -1,6 +1,8 @@
 package ua.artcode.taxi.service;
 
+import ua.artcode.taxi.dao.OrderDao;
 import ua.artcode.taxi.dao.UserDao;
+import ua.artcode.taxi.dao.UserDaoInnerDbImpl;
 import ua.artcode.taxi.exception.OrderMakeException;
 import ua.artcode.taxi.exception.OrderNotFoundException;
 import ua.artcode.taxi.exception.RegisterException;
@@ -19,14 +21,19 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
+    private OrderDao orderDao;
     private double pricePerKilometer = 5;
     private GoogleMapsAPI googleMapsAPI = new GoogleMapsAPIImpl();
     private Map<String, User> accessKeys = new HashMap<>();
     private List<String> orederIds = new ArrayList<>();
-    private Clien
 
-    public UserServiceImpl(UserDao userDao) {
+
+    public UserServiceImpl(UserDao userDao, OrderDao orderDao) {
         this.userDao = userDao;
+        this.orderDao = orderDao;
+    }
+
+    public UserServiceImpl(UserDaoInnerDbImpl userDaoInnerDb) {
     }
 
     @Override
@@ -74,6 +81,8 @@ public class UserServiceImpl implements UserService {
 
             order.setPrice((int) price); // find out how to implement
             order.setUser(accessKeys.get(accessToken));
+
+            Order newOrder = orderDao.createOrder(order);
             return order;
         }
        throw new OrderMakeException("The Order was not created");

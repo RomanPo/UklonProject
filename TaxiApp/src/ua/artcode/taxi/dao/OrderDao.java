@@ -11,7 +11,7 @@ import ua.artcode.taxi.model.Order;
  */
 public interface OrderDao {
 
-    Order createOrder(long orderId);
+    Order createOrder(Order order);
     Order cancelOrder(long orderId);
     Order updateOrder(long orderId);
 }
