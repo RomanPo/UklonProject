@@ -76,6 +76,7 @@ public class DriverRegistration extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MainTaxi(userService);
+                dispose();
             }
         });
 
@@ -84,24 +85,26 @@ public class DriverRegistration extends JFrame {
 
         getContentPane().add(mainLabel);
         getContentPane().add(nullLabel);
+
         getContentPane().add(phoneLabel);
         getContentPane().add(phoneText);
+
         getContentPane().add(nameLabel);
         getContentPane().add(nameText);
+
         getContentPane().add(passLabel);
         getContentPane().add(passText);
+
         getContentPane().add(carTypeLabel);
         getContentPane().add(carTypeText);
+
         getContentPane().add(carModelLabel);
         getContentPane().add(carModelText);
+
         getContentPane().add(carNumberLabel);
         getContentPane().add(carNumberText);
+
         getContentPane().add(buttonPanel1);
         getContentPane().add(buttonPanel2);
-
     }
-
-
-
-
 }

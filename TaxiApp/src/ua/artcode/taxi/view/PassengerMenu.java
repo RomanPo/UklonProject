@@ -72,12 +72,16 @@ public class PassengerMenu extends JFrame {
 
         buttonPanel3 = new JPanel(new GridLayout(1,1));
         searchDriverButton = new JButton("Make Order");
+
         searchDriverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userService.makeOrder(ClientAccesToken.accesTokken, fromText.getText(), distanceText.getText())//To change body of implemented methods use File | Settings | File Templates.
+                userService.makeOrder(ClientAccesToken.accesTokken, fromText.getText(), distanceText.getText());
+                //To change body of implemented methods use File | Settings | File Templates.
+                dispose();
             }
         });
+
 
         buttonPanel3.add(searchDriverButton);
 
@@ -88,6 +92,7 @@ public class PassengerMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MainTaxi(userService);
+                dispose();
             }
         });
 
