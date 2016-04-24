@@ -9,18 +9,18 @@ package ua.artcode.taxi.model;
  */
 public class Car {
 
+    String type;
     String number;
     String model;
-    String color;
 
     public Car() {
 
     }
 
-    public Car(String number, String model, String color) {
+    public Car(String type, String number, String model) {
         this.number = number;
         this.model = model;
-        this.color = color;
+        this.type = type;
     }
 
     public String getNumber() {
@@ -39,11 +39,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getColor() {
-        return color;
+    public String getType() {
+        return type;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setType(String type) {
+        this.type = type;
     }
 }
