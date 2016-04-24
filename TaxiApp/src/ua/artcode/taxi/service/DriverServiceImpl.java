@@ -20,7 +20,7 @@ public class DriverServiceImpl implements DriverService {
 
     private List<String> orederIds = new ArrayList<>();
 
-    public DriverServiceImpl(DriverDao userDao) {
+    public DriverServiceImpl(DriverDao driverDaorDao) {
         this.driverDao = driverDao;
     }
 
