@@ -4,6 +4,8 @@ import ua.artcode.taxi.service.UserService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PassengerMenu extends JFrame {
 
@@ -74,6 +76,12 @@ public class PassengerMenu extends JFrame {
         buttonPanel4 = new JPanel(new GridLayout(1,1));
         cancelButton = new JButton("CANCEL");
         buttonPanel4.add(cancelButton);
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MainTaxi(userService);
+            }
+        });
 
         getContentPane().add(mainLabel);
         getContentPane().add(nullLabel);

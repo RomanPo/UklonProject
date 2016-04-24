@@ -4,6 +4,8 @@ import ua.artcode.taxi.service.UserService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DriverRegistration extends JFrame {
 
@@ -70,6 +72,12 @@ public class DriverRegistration extends JFrame {
 
         buttonPanel2 = new JPanel(new GridLayout(1,1));
         returnButton = new JButton("RETURN");
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MainTaxi(userService);
+            }
+        });
 
         buttonPanel1.add(okButton);
         buttonPanel2.add(returnButton);

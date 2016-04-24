@@ -4,6 +4,8 @@ import ua.artcode.taxi.service.UserService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PassengerRegistration extends JFrame {
 
@@ -58,8 +60,15 @@ public class PassengerRegistration extends JFrame {
         buttonPanel1 = new JPanel(new GridLayout(1,1));
         okButton = new JButton("OK");
 
+
         buttonPanel2 = new JPanel(new GridLayout(1,1));
         returnButton = new JButton("RETURN");
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MainTaxi(userService);
+            }
+        });
 
         buttonPanel1.add(okButton);
         buttonPanel2.add(returnButton);
@@ -78,8 +87,4 @@ public class PassengerRegistration extends JFrame {
         getContentPane().add(buttonPanel2);
 
     }
-
-
-
-
 }

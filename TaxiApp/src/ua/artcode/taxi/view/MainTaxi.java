@@ -49,20 +49,30 @@ public class MainTaxi extends JFrame {
         passText = new JTextField();
 
         buttonPanel1 = new JPanel(new GridLayout(1,1));
-
         loginButton = new JButton("LOGIN");
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PassengerRegistration(userService);
+                new PassengerMenu(userService);
             }
         });
 
-
         buttonPanel2 = new JPanel(new GridLayout(1,1));
         registerButton = new JButton("REGISTER");
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Registration(userService);
+            }
+        });
 
         gonowButton = new JButton("GO NOW!");
+        gonowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PassengerMenu(userService);
+            }
+        });
 
         buttonPanel1.add(loginButton);
         buttonPanel2.add(registerButton);
