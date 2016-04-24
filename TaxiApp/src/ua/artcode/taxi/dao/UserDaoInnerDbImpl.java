@@ -1,5 +1,6 @@
 package ua.artcode.taxi.dao;
 
+import ua.artcode.taxi.exception.UserNotFoundException;
 import ua.artcode.taxi.model.User;
 
 import java.util.Collection;
@@ -22,22 +23,40 @@ public class UserDaoInnerDbImpl implements UserDao {
 
     @Override
     public Collection<User> getAll() {
-        return null;
+        return appDB.getUsers();
     }
 
     @Override
     public User findByPhone(String phone) {
-        return null;
+        for (User user : appDB.getUsers()) {
+            if (user.getPhone().equals(phone)) {
+                return user;
+            }
+        }
+        return new UserNotFoundException();
+
     }
 
     @Override
     public User findById(int id) {
-        return null;
+        for (User user : appDB.getUsers()) {
+            if (user.getId() == 0) {
+                return user;
+            }
+        }
+        return new UserNotFoundException();
     }
 
     @Override
     public User delete(int id) {
-        return null;
+        for (User user : appDB.getUsers()) {
+            if (user.getId() == id) {
+                User user2 = user;
+                appDB.getUsers().remove(user);
+                return user2;
+            }
+        }
+        return new UserNotFoundException();
     }
 
     @Override
