@@ -43,7 +43,7 @@ public class Car {
         return type;
     }
 
-    public void setType(String color) {
+    public void setType(String type) {
         this.type = type;
     }
 }
