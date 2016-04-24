@@ -8,7 +8,6 @@ import ua.artcode.taxi.model.User;
  */
 public class Validator {
     public boolean validatePassword(AppDB appDB, String phone, String password){
-        
         return true;
     }
 }
