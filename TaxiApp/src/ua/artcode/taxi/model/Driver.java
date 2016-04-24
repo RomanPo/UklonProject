@@ -11,18 +11,20 @@ package ua.artcode.taxi.model;
 public class Driver {
 
     String phone;
-    Car car;
     String name;
+    String pass;
+    Car car;
 
     public Driver() {
 
     }
 
-    public Driver(String phone, Car car, String name) {
+    public Driver(String phone, String name, String pass, Car car) {
 
         this.phone = phone;
-        this.car = car;
+        this.pass = pass;
         this.name = name;
+        this.car = car;
     }
 
     public String getPhone() {
@@ -47,5 +49,13 @@ public class Driver {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }
