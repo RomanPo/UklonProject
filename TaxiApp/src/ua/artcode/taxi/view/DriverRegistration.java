@@ -4,6 +4,8 @@ import ua.artcode.taxi.service.UserService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DriverRegistration extends JFrame {
 
@@ -70,30 +72,39 @@ public class DriverRegistration extends JFrame {
 
         buttonPanel2 = new JPanel(new GridLayout(1,1));
         returnButton = new JButton("RETURN");
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new MainTaxi(userService);
+                dispose();
+            }
+        });
 
         buttonPanel1.add(okButton);
         buttonPanel2.add(returnButton);
 
         getContentPane().add(mainLabel);
         getContentPane().add(nullLabel);
+
         getContentPane().add(phoneLabel);
         getContentPane().add(phoneText);
+
         getContentPane().add(nameLabel);
         getContentPane().add(nameText);
+
         getContentPane().add(passLabel);
         getContentPane().add(passText);
+
         getContentPane().add(carTypeLabel);
         getContentPane().add(carTypeText);
+
         getContentPane().add(carModelLabel);
         getContentPane().add(carModelText);
+
         getContentPane().add(carNumberLabel);
         getContentPane().add(carNumberText);
+
         getContentPane().add(buttonPanel1);
         getContentPane().add(buttonPanel2);
-
     }
-
-
-
-
 }

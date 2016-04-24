@@ -67,6 +67,7 @@ public class MakeOrderFrame extends JFrame {
                 source.getParent().getComponents();*/
                 JOptionPane.showMessageDialog(getParent(), "Some popup message");
                 distanceText.setText(String.valueOf(System.currentTimeMillis()));
+                dispose();
             }
         });
 

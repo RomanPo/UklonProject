@@ -1,5 +1,8 @@
 package ua.artcode.taxi.view;
 
+import ua.artcode.taxi.exception.OrderMakeException;
+import ua.artcode.taxi.exception.UserNotFoundException;
+import ua.artcode.taxi.model.Address;
 import ua.artcode.taxi.service.ClientAccesToken;
 import ua.artcode.taxi.service.UserService;
 
@@ -30,7 +33,7 @@ public class PassengerMenu extends JFrame {
     private JButton usePreviousButton;
     private JButton findLocationButton;
     private JButton searchDriverButton;
-    private JButton cancelButton;
+    private JButton calculateButton;
 
     public PassengerMenu(UserService userService){
 
@@ -75,7 +78,26 @@ public class PassengerMenu extends JFrame {
         searchDriverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userService.makeOrder(ClientAccesToken.accesTokken, fromText.getText(), distanceText.getText())//To change body of implemented methods use File | Settings | File Templates.
+                Address addressFrom1 = new Address();
+                Address addressTo1 = new Address();
+                String[] addressFrom = fromText.getText().split(",");
+                addressFrom1.setHouseNum(addressFrom[0]);
+                addressFrom1.setStreet(addressFrom[1]);
+                addressFrom1.setCity(addressFrom[2]);
+                addressFrom1.setCountry(addressFrom[3]);
+
+                String[] addressTo = toText.getText().split(",");
+                addressTo1.setHouseNum(addressTo[0]);
+                addressTo1.setStreet(addressTo[1]);
+                addressTo1.setCity(addressTo[2]);
+                addressTo1.setCountry(addressTo[3]);
+                try {
+                    userService.makeOrder(ClientAccesToken.accesTokken, addressFrom1, addressTo1);//To change body of implemented methods use File | Settings | File Templates.
+                } catch (OrderMakeException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (UserNotFoundException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
             }
         });
 

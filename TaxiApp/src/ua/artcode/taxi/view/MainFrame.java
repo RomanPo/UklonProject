@@ -30,6 +30,7 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new MakeOrderFrame(userService);
+                dispose();
             }
         });
         getContentPane().add(makeOrder);
