@@ -1,5 +1,6 @@
 package ua.artcode.taxi.service;
 
+import ua.artcode.taxi.dao.OrderDao;
 import ua.artcode.taxi.dao.UserDao;
 import ua.artcode.taxi.dao.UserDaoInnerDbImpl;
 import ua.artcode.taxi.exception.OrderMakeException;
@@ -25,7 +26,6 @@ public class UserServiceImpl implements UserService {
     private GoogleMapsAPI googleMapsAPI = new GoogleMapsAPIImpl();
     private Map<String, User> accessKeys = new HashMap<>();
     private List<String> orederIds = new ArrayList<>();
-    private Clien
 
 
     public UserServiceImpl(UserDao userDao, OrderDao orderDao) {
@@ -33,7 +33,8 @@ public class UserServiceImpl implements UserService {
         this.orderDao = orderDao;
     }
 
-    public UserServiceImpl(UserDaoInnerDbImpl userDaoInnerDb) {
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
@@ -67,7 +68,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException, UserNotFoundException {
-        if (!accessToken.equals(null)) {
+        if (accessToken.equals(null)) {
             Order order = new Order();
             order.setId(System.currentTimeMillis());
             order.setFrom(from);
