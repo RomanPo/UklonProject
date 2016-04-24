@@ -5,6 +5,10 @@ import ua.artcode.taxi.exception.UserNotFoundException;
 import ua.artcode.taxi.model.Address;
 import ua.artcode.taxi.service.ClientAccesToken;
 import ua.artcode.taxi.service.UserService;
+import ua.artcode.taxi.service.UserServiceImpl;
+import ua.artcode.taxi.utils.geolocation.GoogleMapsAPI;
+import ua.artcode.taxi.utils.geolocation.GoogleMapsAPIImpl;
+import ua.artcode.taxi.utils.geolocation.Location;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +18,7 @@ import java.awt.event.ActionListener;
 public class PassengerMenu extends JFrame {
 
     private final UserService userService;
+    private double priceForKm;
 
     private JLabel mainLabel;
     private JLabel nullLabel;
@@ -35,6 +40,7 @@ public class PassengerMenu extends JFrame {
     private JButton searchDriverButton;
     private JButton calculateButton;
     private JButton cancelButton;
+    private GoogleMapsAPI googleMapsAPI = new GoogleMapsAPIImpl();
 
     public PassengerMenu(UserService userService){
 
@@ -81,13 +87,13 @@ public class PassengerMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 Address addressFrom1 = new Address();
                 Address addressTo1 = new Address();
-                String[] addressFrom = fromText.getText().split(",");
+                String[] addressFrom = fromText.getText().split(" ");
                 addressFrom1.setHouseNum(addressFrom[0]);
                 addressFrom1.setStreet(addressFrom[1]);
                 addressFrom1.setCity(addressFrom[2]);
                 addressFrom1.setCountry(addressFrom[3]);
 
-                String[] addressTo = toText.getText().split(",");
+                String[] addressTo = toText.getText().split(" ");
                 addressTo1.setHouseNum(addressTo[0]);
                 addressTo1.setStreet(addressTo[1]);
                 addressTo1.setCity(addressTo[2]);
@@ -106,7 +112,23 @@ public class PassengerMenu extends JFrame {
 
         buttonPanel4 = new JPanel(new GridLayout(1,1));
         calculateButton = new JButton("Calculate Price");
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Address addressFrom = new Address();
+                Address addressTo = new Address();
+                String[] adressFrom = fromText.getText().split(" ");
+                String[] adressTo = toText.getText().split(" ");
+                Location location = googleMapsAPI.findLocation(adressFrom[0], adressFrom[1], adressFrom[2],adressFrom[3]);
+                Location location1 = googleMapsAPI.findLocation(adressTo[0], adressTo[1], adressTo[2], adressTo[3]);
+                double price = priceForKm * googleMapsAPI.getDistance(location, location1);
+
+                priceText.setText(price + "");
+            }
+        });
+
         buttonPanel4.add(calculateButton);
+
 
         getContentPane().add(mainLabel);
         getContentPane().add(nullLabel);
