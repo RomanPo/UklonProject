@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
     private GoogleMapsAPI googleMapsAPI = new GoogleMapsAPIImpl();
     private Map<String, User> accessKeys = new HashMap<>();
     private List<String> orederIds = new ArrayList<>();
-    private Clien
 
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -33,7 +32,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public Message register(User user) throws RegisterException {
         // validation user object(phone, login, pass)
-
         User created = userDao.create(user);
 
         if (created == null) {
