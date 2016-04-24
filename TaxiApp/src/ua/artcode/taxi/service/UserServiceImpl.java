@@ -1,5 +1,6 @@
 package ua.artcode.taxi.service;
 
+import ua.artcode.taxi.dao.OrderDao;
 import ua.artcode.taxi.dao.UserDao;
 import ua.artcode.taxi.dao.UserDaoInnerDbImpl;
 import ua.artcode.taxi.exception.OrderMakeException;
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
     private GoogleMapsAPI googleMapsAPI = new GoogleMapsAPIImpl();
     private Map<String, User> accessKeys = new HashMap<>();
     private List<String> orederIds = new ArrayList<>();
-    private Clien
+
 
 
     public UserServiceImpl(UserDao userDao, OrderDao orderDao) {
@@ -34,6 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public UserServiceImpl(UserDaoInnerDbImpl userDaoInnerDb) {
+        this.userDao = userDaoInnerDb;
     }
 
     @Override

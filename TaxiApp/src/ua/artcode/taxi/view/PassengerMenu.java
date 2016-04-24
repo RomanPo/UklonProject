@@ -104,8 +104,8 @@ public class PassengerMenu extends JFrame {
         buttonPanel3.add(searchDriverButton);
 
         buttonPanel4 = new JPanel(new GridLayout(1,1));
-        cancelButton = new JButton("Calculate Price");
-        buttonPanel4.add(cancelButton);
+        calculateButton = new JButton("Calculate Price");
+        buttonPanel4.add(calculateButton);
 
         getContentPane().add(mainLabel);
         getContentPane().add(nullLabel);

@@ -13,8 +13,8 @@ public class TestLoginUser {
     public static void main(String[] args) {
         AppDB appDB = new AppDB();
 
-        User user1 = new User(1,"+3809345896","test","Vasya");
-        User user2 = new User(2,"+3802345896","test1","Ivan");
+        User user1 = new User("1","+3809345896","test","Vasya");
+        User user2 = new User("2","+3802345896","test1","Ivan");
         UserDao userDao = new UserDaoInnerDbImpl(appDB);
         userDao.create(user1);
         userDao.create(user2);
