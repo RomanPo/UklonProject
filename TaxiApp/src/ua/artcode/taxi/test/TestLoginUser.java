@@ -19,11 +19,12 @@ public class TestLoginUser {
     public static void main(String[] args) throws LoginException, UserNotFoundException {
         AppDB appDB = new AppDB();
 
-        User user1 = new User(1,"+3809345896","test","Vasya");
-        User user2 = new User(2,"+3802345896","test1","Ivan");
+        User user1 = new User("+3809345896","test","Vasya",null);
+        User user2 = new User("+3802345896","test1","Ivan",null);
         UserDao userDao = new UserDaoInnerDbImpl(appDB);
         userDao.create(user1);
         userDao.create(user2);
+        System.out.println(appDB.toString());
         UserService userService = new UserServiceImpl(userDao);
         testLoginPositive(userService);
     }
@@ -31,6 +32,8 @@ public class TestLoginUser {
 
     public static boolean  testLoginPositive(UserService userService) throws LoginException, UserNotFoundException {
         String accessKey = userService.login("+3809345896","test");
+
+        System.out.println(accessKey);
         if (!accessKey.equals(null)){
             return true;
         }
