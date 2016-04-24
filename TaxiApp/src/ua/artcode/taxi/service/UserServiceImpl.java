@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException, UserNotFoundException {
-        if (accessToken.equals(null)) {
+
             Order order = new Order();
             order.setId(System.currentTimeMillis());
             order.setFrom(from);
@@ -84,8 +84,8 @@ public class UserServiceImpl implements UserService {
             order.setPrice((int) price);
             order.setUser(accessKeys.get(accessToken));
             return order;
-        }
-       throw new OrderMakeException("The Order was not created");
+
+       //throw new OrderMakeException("The Order was not created");
     }
 
     @Override

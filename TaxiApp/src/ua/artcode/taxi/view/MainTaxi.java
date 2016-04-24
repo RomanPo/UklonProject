@@ -65,6 +65,7 @@ public class MainTaxi extends JFrame {
                 } catch (UserNotFoundException e1) {
                     e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
+                new PassengerMenu(userService);
                 dispose();
             }
         });
