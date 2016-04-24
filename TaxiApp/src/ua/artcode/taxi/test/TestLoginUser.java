@@ -31,7 +31,7 @@ public class TestLoginUser {
 
     public static boolean  testLoginPositive(UserService userService) throws LoginException, UserNotFoundException {
         String accessKey = userService.login("+3809345896","test");
-        if (!accessKey.equals(null){
+        if (!accessKey.equals(null)){
             return true;
         }
         return false;
