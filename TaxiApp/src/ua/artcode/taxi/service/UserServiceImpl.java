@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
+
     @Override
     public Message register(User user) throws RegisterException {
         // validation user object(phone, login, pass)
