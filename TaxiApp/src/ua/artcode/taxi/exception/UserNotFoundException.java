@@ -14,4 +14,7 @@ public class UserNotFoundException extends TaxiAppException {
     public UserNotFoundException(String message) {
         super(message);
     }
+
+
+
 }

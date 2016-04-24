@@ -21,7 +21,7 @@ public interface UserService {
     // return accessToken
     String login(String phone, String pass) throws LoginException, UserNotFoundException;
 
-    Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException;
+    Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException, UserNotFoundException;
     Order makeOrderAnonymous(String phone, String from, String to) throws OrderMakeException;
 
     Order submitOrder(Order order) throws OrderMakeException;
