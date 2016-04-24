@@ -2,6 +2,9 @@ package ua.artcode.taxi.service;
 
 import ua.artcode.taxi.model.Driver;
 import ua.artcode.taxi.model.Message;
+import ua.artcode.taxi.model.Order;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,6 +15,7 @@ import ua.artcode.taxi.model.Message;
  */
 public interface DriverService {
     Message register(Driver driver);
-    String login(Driver driver);
+    //String login(Driver driver);
+    List<Order> getOrders();
 
 }
