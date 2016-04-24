@@ -1,5 +1,6 @@
 package ua.artcode.taxi.dao;
 
+import ua.artcode.taxi.exception.UserNotFoundException;
 import ua.artcode.taxi.model.User;
 
 import java.util.Collection;
@@ -16,11 +17,11 @@ public interface UserDao {
 
     Collection<User> getAll();
 
-    User findByPhone(String phone);
+    User findByPhone(String phone) throws UserNotFoundException;
 
-    User findById(int id);
+    User findById(int id) throws UserNotFoundException;
 
-    User delete(int id);
+    User delete(int id) throws UserNotFoundException;
 
     User update(User newUser);
 

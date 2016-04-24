@@ -11,7 +11,7 @@ public class User {
     // optinal
     private String name;
 
-    public User(String message) {
+    public User() {
     }
 
     public User(int id, String phone, String pass) {
