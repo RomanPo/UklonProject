@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
 public class PassengerMenu extends JFrame {
 
     private final UserService userService;
-    private double priceForKm;
+    private double priceMeter = 0.5;
 
     private JLabel mainLabel;
     private JLabel nullLabel;
@@ -124,7 +124,8 @@ public class PassengerMenu extends JFrame {
                 String[] adressTo = toText.getText().split(" ");
                 Location location = googleMapsAPI.findLocation(adressFrom[0], adressFrom[1], adressFrom[2],adressFrom[3]);
                 Location location1 = googleMapsAPI.findLocation(adressTo[0], adressTo[1], adressTo[2], adressTo[3]);
-                double price = priceForKm * googleMapsAPI.getDistance(location, location1);
+                double distance = googleMapsAPI.getDistance(location, location1);
+                double price = priceMeter * distance;
 
                 priceText.setText(price + "");
             }
