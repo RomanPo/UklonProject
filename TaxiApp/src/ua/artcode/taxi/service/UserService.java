@@ -3,6 +3,7 @@ package ua.artcode.taxi.service;
 import ua.artcode.taxi.exception.OrderMakeException;
 import ua.artcode.taxi.exception.OrderNotFoundException;
 import ua.artcode.taxi.exception.RegisterException;
+import ua.artcode.taxi.exception.UserNotFoundException;
 import ua.artcode.taxi.model.Address;
 import ua.artcode.taxi.model.Message;
 import ua.artcode.taxi.model.Order;
@@ -20,7 +21,7 @@ public interface UserService {
     // return accessToken
     String login(String phone, String pass) throws LoginException;
 
-    Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException;
+    Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException, UserNotFoundException;
     Order makeOrderAnonymous(String phone, String from, String to) throws OrderMakeException;
 
     Order submitOrder(Order order) throws OrderMakeException;

@@ -5,9 +5,18 @@ package ua.artcode.taxi.model;
  */
 public class Address {
 
+    private String country;
     private String city;
     private String street;
     private String houseNum;
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     // google api
     private double lat;
@@ -17,6 +26,8 @@ public class Address {
         this.city = city;
         this.street = street;
         this.houseNum = houseNum;
+        this.country = country;
+
     }
 
     public Address(double lat, double lon) {

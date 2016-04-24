@@ -4,21 +4,24 @@ import ua.artcode.taxi.dao.UserDao;
 import ua.artcode.taxi.exception.OrderMakeException;
 import ua.artcode.taxi.exception.OrderNotFoundException;
 import ua.artcode.taxi.exception.RegisterException;
+import ua.artcode.taxi.exception.UserNotFoundException;
 import ua.artcode.taxi.model.*;
+import ua.artcode.taxi.utils.geolocation.GoogleMapsAPI;
+import ua.artcode.taxi.utils.geolocation.GoogleMapsAPIImpl;
+import ua.artcode.taxi.utils.geolocation.Location;
 
 import javax.security.auth.login.LoginException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by serhii on 23.04.16.
  */
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
-
-    private List<String> accessKeys = new ArrayList<>();
+    private double pricePerKilometer = 5;
+    private GoogleMapsAPI googleMapsAPI = new GoogleMapsAPIImpl();
+    private Map<String, User> accessKeys = new HashMap<>();
     private List<String> orederIds = new ArrayList<>();
 
     public UserServiceImpl(UserDao userDao) {
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserService{
 
         User created = userDao.create(user);
 
-        if(created == null){
+        if (created == null) {
             throw new RegisterException("can not create exception");
         }
 
@@ -44,31 +47,35 @@ public class UserServiceImpl implements UserService{
         User found = userDao.findByPhone(phone);
 
 
-
-        if(found == null || !found.getPass().equals(pass)){
+        if (found == null || !found.getPass().equals(pass)) {
             throw new LoginException("User not found or incorrect password");
         }
 
         String accessKey = UUID.randomUUID().toString();
-        accessKeys.add(accessKey);
+        accessKeys.put(accessKey, found);
 
         return accessKey;
     }
 
-
-
     @Override
-    public Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException {
-        if (!accessToken.equals(null)){
+    public Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException, UserNotFoundException {
+        if (!accessToken.equals(null)) {
             Order order = new Order();
             order.setId(System.currentTimeMillis());
             order.setFrom(from);
             order.setTo(to);
             order.setOrderStatus(OrderStatus.NEW);
-            order.setPrice(Calculator.calculateThePrice(order)); // find out how to implement
-            //order.setUser(userDao.findById());
+
+            Location location = googleMapsAPI.findLocation(from.getCountry(), from.getCity(), from.getStreet(), from.getHouseNum());
+            Location location1 = googleMapsAPI.findLocation(to.getCountry(), to.getCity(), to.getStreet(), to.getHouseNum());
+
+            double price = pricePerKilometer * googleMapsAPI.getDistance(location, location1);
+
+            order.setPrice((int) price); // find out how to implement
+            order.setUser(accessKeys.get(accessToken));
+            return order;
         }
-    return null;
+       throw new OrderMakeException("The Order was not created");
     }
 
     @Override
