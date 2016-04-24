@@ -1,5 +1,6 @@
 package ua.artcode.taxi.service;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import ua.artcode.taxi.dao.AppDB;
 import ua.artcode.taxi.dao.DriverDao;
 import ua.artcode.taxi.exception.RegisterException;
@@ -36,6 +37,8 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public List<Order> getOrders(AppDB appDB) {
-        return null;
+        List<Order> orderList = new ArrayList<>();
+        orderList = appDB.getOrders();
+        return orderList;
     }
 }
