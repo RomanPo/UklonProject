@@ -37,9 +37,6 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
-    public UserServiceImpl(UserDao userDao) {
-        this.userDao = userDao;
-    }
 
     @Override
     public Message register(User user) throws RegisterException {
