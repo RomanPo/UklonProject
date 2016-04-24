@@ -32,7 +32,7 @@ public class PassengerMenu extends JFrame {
 
     private JButton usePreviousButton;
     private JButton findLocationButton;
-    private JButton searchDriverButton;
+    private JButton makeOrderButton;
     private JButton calculateButton;
     private JButton cancelButton;
 
@@ -75,8 +75,8 @@ public class PassengerMenu extends JFrame {
         priceText = new JTextField();
 
         buttonPanel3 = new JPanel(new GridLayout(1,1));
-        searchDriverButton = new JButton("Make Order");
-        searchDriverButton.addActionListener(new ActionListener() {
+        makeOrderButton = new JButton("Make Order");
+        makeOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Address addressFrom1 = new Address();
@@ -93,7 +93,10 @@ public class PassengerMenu extends JFrame {
                 addressTo1.setCity(addressTo[2]);
                 addressTo1.setCountry(addressTo[3]);
                 try {
-                    userService.makeOrder(ClientAccesToken.accesTokken, addressFrom1, addressTo1);//To change body of implemented methods use File | Settings | File Templates.
+                    userService.makeOrder(ClientAccesToken.accesTokken, addressFrom1, addressTo1);
+                    new OrderInfo(userService);
+                    dispose();
+                    //To change body of implemented methods use File | Settings | File Templates.
                 } catch (OrderMakeException e1) {
                     e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 } catch (UserNotFoundException e1) {
@@ -102,7 +105,7 @@ public class PassengerMenu extends JFrame {
             }
         });
 
-        buttonPanel3.add(searchDriverButton);
+        buttonPanel3.add(makeOrderButton);
 
         buttonPanel4 = new JPanel(new GridLayout(1,1));
         calculateButton = new JButton("Calculate Price");
