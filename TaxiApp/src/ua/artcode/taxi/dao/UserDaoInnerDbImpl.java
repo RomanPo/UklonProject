@@ -5,12 +5,18 @@ import ua.artcode.taxi.model.User;
 
 import java.util.Collection;
 
-/**
- * Created by serhii on 23.04.16.
- */
 public class UserDaoInnerDbImpl implements UserDao {
 
+
     private AppDB appDB;
+
+    public AppDB getAppDB() {
+        return appDB;
+    }
+
+    public void setAppDB(AppDB appDB) {
+        this.appDB = appDB;
+    }
 
     public UserDaoInnerDbImpl(AppDB appDB) {
         this.appDB = appDB;
@@ -31,9 +37,8 @@ public class UserDaoInnerDbImpl implements UserDao {
         User result = null;
         for (User user : appDB.getUsers()) {
             if (user.getPhone().equals(phone)) {
-                result =  user;
-            }
-            else{
+                result = user;
+            } else {
                 throw new UserNotFoundException("User not found");
             }
         }
@@ -46,8 +51,7 @@ public class UserDaoInnerDbImpl implements UserDao {
         for (User user : appDB.getUsers()) {
             if (user.getId() == 0) {
                 return user;
-            }
-            else{
+            } else {
                 throw new UserNotFoundException("User not found");
             }
         }
@@ -62,16 +66,17 @@ public class UserDaoInnerDbImpl implements UserDao {
                 User user2 = user;
                 appDB.getUsers().remove(user);
                 return user2;
-            }
-            else{
+            } else {
                 throw new UserNotFoundException("User not found");
             }
         }
-       return result;
+        return result;
     }
 
     @Override
     public User update(User newUser) {
         return null;
     }
+
+
 }

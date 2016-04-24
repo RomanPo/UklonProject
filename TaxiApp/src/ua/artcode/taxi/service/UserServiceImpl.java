@@ -1,9 +1,11 @@
 package ua.artcode.taxi.service;
 
+import ua.artcode.taxi.dao.AppDB;
 import ua.artcode.taxi.dao.UserDao;
 import ua.artcode.taxi.exception.OrderMakeException;
 import ua.artcode.taxi.exception.OrderNotFoundException;
 import ua.artcode.taxi.exception.RegisterException;
+import ua.artcode.taxi.exception.UserNotFoundException;
 import ua.artcode.taxi.model.*;
 
 import javax.security.auth.login.LoginException;
@@ -39,7 +41,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String login(String phone, String pass) throws LoginException {
+    public String login(String phone, String pass) throws LoginException, UserNotFoundException {
 
         User found = userDao.findByPhone(phone);
 
@@ -90,4 +92,5 @@ public class UserServiceImpl implements UserService{
     public Message cancelOrder(long orderId) throws OrderNotFoundException {
         return null;
     }
+
 }
