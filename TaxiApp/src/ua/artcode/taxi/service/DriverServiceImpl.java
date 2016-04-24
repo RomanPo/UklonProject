@@ -1,9 +1,13 @@
 package ua.artcode.taxi.service;
 
+import ua.artcode.taxi.dao.AppDB;
+import ua.artcode.taxi.dao.DriverDao;
+import ua.artcode.taxi.exception.RegisterException;
 import ua.artcode.taxi.model.Driver;
 import ua.artcode.taxi.model.Message;
 import ua.artcode.taxi.model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,13 +15,27 @@ import java.util.List;
  */
 public class DriverServiceImpl implements DriverService {
 
-    @Override
-    public Message register(Driver driver) {
-        return null;
+    private DriverDao driverDao;
+
+    private List<String> orederIds = new ArrayList<>();
+
+    public DriverServiceImpl(DriverDao userDao) {
+        this.driverDao = driverDao;
     }
 
     @Override
-    public List<Order> getOrders() {
+    public Message register(Driver driver) throws RegisterException {
+        Driver created = driverDao.create(driver);
+
+        if(created == null){
+            throw new RegisterException("can not create exception");
+        }
+
+        return new Message("driver created", created.toString());
+    }
+
+    @Override
+    public List<Order> getOrders(AppDB appDB) {
         return null;
     }
 }

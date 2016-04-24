@@ -1,5 +1,7 @@
 package ua.artcode.taxi.service;
 
+import ua.artcode.taxi.dao.AppDB;
+import ua.artcode.taxi.exception.RegisterException;
 import ua.artcode.taxi.model.Driver;
 import ua.artcode.taxi.model.Message;
 import ua.artcode.taxi.model.Order;
@@ -14,8 +16,8 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface DriverService {
-    Message register(Driver driver);
+    Message register(Driver driver) throws RegisterException;
     //String login(Driver driver);
-    List<Order> getOrders();
+    List<Order> getOrders(AppDB appDB);
 
 }
