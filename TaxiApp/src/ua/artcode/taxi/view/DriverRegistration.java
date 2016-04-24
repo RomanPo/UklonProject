@@ -15,12 +15,14 @@ public class DriverRegistration extends JFrame {
     private JTextField phoneText;
     private JLabel nameLabel;
     private JTextField nameText;
+    private JLabel passLabel;
+    private JTextField passText;
+    private JLabel carTypeLabel;
+    private JTextField carTypeText;
     private JLabel carModelLabel;
     private JTextField carModelText;
     private JLabel carNumberLabel;
     private JTextField carNumberText;
-    private JLabel carAddLabel;
-    private JTextField carAddText;
     private JPanel buttonPanel1;
     private JPanel buttonPanel2;
 
@@ -39,7 +41,7 @@ public class DriverRegistration extends JFrame {
     }
 
     private void init() {
-        GridLayout gridLayout = new GridLayout(6, 1);
+        GridLayout gridLayout = new GridLayout(8, 1);
         setLayout(gridLayout);
 
         mainLabel = new JLabel("DRIVER REGISTRATION");
@@ -48,14 +50,20 @@ public class DriverRegistration extends JFrame {
         phoneLabel = new JLabel("PHONE:");
         phoneText = new JTextField();
 
+        nameLabel = new JLabel("NAME:");
+        nameText = new JTextField();
+
+        passLabel = new JLabel("PASSWORD:");
+        passText = new JTextField();
+
+        carTypeLabel = new JLabel("CAR TYPE:");
+        carTypeText = new JTextField();
+
         carModelLabel = new JLabel("CAR MODEL:");
         carModelText = new JTextField();
 
         carNumberLabel = new JLabel("CAR NUMBER:");
         carNumberText = new JTextField();
-
-        carAddLabel = new JLabel("ADD INFO (?):");
-        carAddText = new JTextField();
 
         buttonPanel1 = new JPanel(new GridLayout(1,1));
         okButton = new JButton("OK");
@@ -70,12 +78,16 @@ public class DriverRegistration extends JFrame {
         getContentPane().add(nullLabel);
         getContentPane().add(phoneLabel);
         getContentPane().add(phoneText);
+        getContentPane().add(nameLabel);
+        getContentPane().add(nameText);
+        getContentPane().add(passLabel);
+        getContentPane().add(passText);
+        getContentPane().add(carTypeLabel);
+        getContentPane().add(carTypeText);
         getContentPane().add(carModelLabel);
         getContentPane().add(carModelText);
         getContentPane().add(carNumberLabel);
         getContentPane().add(carNumberText);
-        getContentPane().add(carAddLabel);
-        getContentPane().add(carAddText);
         getContentPane().add(buttonPanel1);
         getContentPane().add(buttonPanel2);
 

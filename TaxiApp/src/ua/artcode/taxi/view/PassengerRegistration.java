@@ -15,8 +15,8 @@ public class PassengerRegistration extends JFrame {
     private JTextField phoneText;
     private JLabel nameLabel;
     private JTextField nameText;
-    private JLabel birthdayLabel;
-    private JTextField birthdayText;
+    private JLabel passLabel;
+    private JTextField passText;
     private JLabel homeAddressLabel;
     private JTextField homeAddressText;
     private JPanel buttonPanel1;
@@ -49,8 +49,8 @@ public class PassengerRegistration extends JFrame {
         nameLabel = new JLabel("NAME:");
         nameText = new JTextField();
 
-        birthdayLabel = new JLabel("BIRTHDAY:");
-        birthdayText = new JTextField();
+        passLabel = new JLabel("PASSWORD:");
+        passText = new JTextField();
 
         homeAddressLabel = new JLabel("HOME ADDRESS:");
         homeAddressText = new JTextField();
@@ -70,8 +70,8 @@ public class PassengerRegistration extends JFrame {
         getContentPane().add(phoneText);
         getContentPane().add(nameLabel);
         getContentPane().add(nameText);
-        getContentPane().add(birthdayLabel);
-        getContentPane().add(birthdayText);
+        getContentPane().add(passLabel);
+        getContentPane().add(passText);
         getContentPane().add(homeAddressLabel);
         getContentPane().add(homeAddressText);
         getContentPane().add(buttonPanel1);
