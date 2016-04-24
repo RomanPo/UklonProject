@@ -1,7 +1,10 @@
 package ua.artcode.taxi.view;
 
+import ua.artcode.taxi.exception.UserNotFoundException;
+import ua.artcode.taxi.service.ClientAccesToken;
 import ua.artcode.taxi.service.UserService;
 
+import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -49,30 +52,27 @@ public class MainTaxi extends JFrame {
         passText = new JTextField();
 
         buttonPanel1 = new JPanel(new GridLayout(1,1));
+
         loginButton = new JButton("LOGIN");
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PassengerMenu(userService);
+                try {
+                    String accessToken = userService.login(loginText.getText(), passText.getText());
+                    ClientAccesToken.accesTokken = accessToken;
+                } catch (LoginException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (UserNotFoundException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
             }
         });
+
 
         buttonPanel2 = new JPanel(new GridLayout(1,1));
         registerButton = new JButton("REGISTER");
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new Registration(userService);
-            }
-        });
 
         gonowButton = new JButton("GO NOW!");
-        gonowButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new PassengerMenu(userService);
-            }
-        });
 
         buttonPanel1.add(loginButton);
         buttonPanel2.add(registerButton);

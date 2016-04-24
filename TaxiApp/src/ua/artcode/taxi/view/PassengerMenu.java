@@ -1,5 +1,6 @@
 package ua.artcode.taxi.view;
 
+import ua.artcode.taxi.service.ClientAccesToken;
 import ua.artcode.taxi.service.UserService;
 
 import javax.swing.*;
@@ -70,11 +71,18 @@ public class PassengerMenu extends JFrame {
         priceText = new JTextField();
 
         buttonPanel3 = new JPanel(new GridLayout(1,1));
-        searchDriverButton = new JButton("SEARCH DRIVER");
+        searchDriverButton = new JButton("Make Order");
+        searchDriverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userService.makeOrder(ClientAccesToken.accesTokken, fromText.getText(), distanceText.getText())//To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
+
         buttonPanel3.add(searchDriverButton);
 
         buttonPanel4 = new JPanel(new GridLayout(1,1));
-        cancelButton = new JButton("CANCEL");
+        cancelButton = new JButton("Calculate Price");
         buttonPanel4.add(cancelButton);
         cancelButton.addActionListener(new ActionListener() {
             @Override
