@@ -24,8 +24,9 @@ public class TestLoginUser {
         UserDao userDao = new UserDaoInnerDbImpl(appDB);
         userDao.create(user1);
         userDao.create(user2);
+
         System.out.println(appDB.toString());
-        UserService userService = new UserServiceImpl(userDao);
+        UserService userService = new UserServiceImpl((UserDaoInnerDbImpl) userDao);
         testLoginPositive(userService);
     }
 
@@ -40,7 +41,8 @@ public class TestLoginUser {
         return false;
     }
 
-   public static boolean testLoginNegative(UserDao userDao, AppDB appDB){
+   public static boolean testLoginNegative(UserService userService){
+
        return false;
    }
 
