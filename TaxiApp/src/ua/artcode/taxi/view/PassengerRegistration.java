@@ -73,6 +73,7 @@ public class PassengerRegistration extends JFrame {
                     JOptionPane.showMessageDialog(getParent(), "Login or password is wrong!");
                     e1.printStackTrace();
                 }
+                new PassengerMenu(userService);
                 dispose();
             }
         });
