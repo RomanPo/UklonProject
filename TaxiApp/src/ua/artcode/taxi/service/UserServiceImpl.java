@@ -33,7 +33,8 @@ public class UserServiceImpl implements UserService {
         this.orderDao = orderDao;
     }
 
-    public UserServiceImpl(UserDaoInnerDbImpl userDaoInnerDb) {
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     public UserServiceImpl(UserDao userDao) {
@@ -71,7 +72,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Order makeOrder(String accessToken, Address from, Address to) throws OrderMakeException, UserNotFoundException {
-        if (!accessToken.equals(null)) {
+        if (accessToken.equals(null)) {
             Order order = new Order();
             order.setId(System.currentTimeMillis());
             order.setFrom(from);
@@ -83,7 +84,7 @@ public class UserServiceImpl implements UserService {
 
             double price = pricePerKilometer * googleMapsAPI.getDistance(location, location1);
 
-            order.setPrice((int) price); // find out how to implement
+            order.setPrice((int) price);
             order.setUser(accessKeys.get(accessToken));
             return order;
         }
