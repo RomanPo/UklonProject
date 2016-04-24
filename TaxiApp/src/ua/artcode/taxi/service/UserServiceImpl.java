@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
 
             double price = pricePerKilometer * googleMapsAPI.getDistance(location, location1);
 
-            order.setPrice((int) price); // find out how to implement
+            order.setPrice((int) price);
             order.setUser(accessKeys.get(accessToken));
             return order;
         }
