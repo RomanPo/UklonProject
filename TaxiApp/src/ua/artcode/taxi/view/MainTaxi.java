@@ -65,14 +65,29 @@ public class MainTaxi extends JFrame {
                 } catch (UserNotFoundException e1) {
                     e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
                 }
+                dispose();
             }
         });
 
 
         buttonPanel2 = new JPanel(new GridLayout(1,1));
         registerButton = new JButton("REGISTER");
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Registration(userService);
+                dispose();
+            }
+        });
 
         gonowButton = new JButton("GO NOW!");
+        gonowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PassengerMenu(userService);
+                dispose();
+            }
+        });
 
         buttonPanel1.add(loginButton);
         buttonPanel2.add(registerButton);
@@ -80,16 +95,14 @@ public class MainTaxi extends JFrame {
 
         getContentPane().add(helloLabel);
         getContentPane().add(nullLabel);
+
         getContentPane().add(loginLabel);
         getContentPane().add(loginText);
+
         getContentPane().add(passLabel);
         getContentPane().add(passText);
+
         getContentPane().add(buttonPanel1);
         getContentPane().add(buttonPanel2);
-
     }
-
-
-
-
 }

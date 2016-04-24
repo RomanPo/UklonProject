@@ -37,6 +37,7 @@ public class Registration extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new PassengerRegistration(userService);
+                dispose();
             }
         });
 
@@ -46,6 +47,7 @@ public class Registration extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new DriverRegistration(userService);
+                dispose();
             }
         });
 

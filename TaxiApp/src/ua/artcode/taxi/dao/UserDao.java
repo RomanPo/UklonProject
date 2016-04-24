@@ -12,7 +12,6 @@ import java.util.Collection;
 // CRUD, Create, Read, Update, Delete
 public interface UserDao {
 
-    // return user with id
     User create(User user);
 
     Collection<User> getAll();

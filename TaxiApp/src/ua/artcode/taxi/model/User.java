@@ -8,8 +8,17 @@ public class User {
     private int id;
     private String phone;
     private String pass;
-    // optinal
+    // optional
     private String name;
+    private String homeAddress;
+
+    public String getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
+    }
 
     public User() {
     }
@@ -20,11 +29,11 @@ public class User {
         this.pass = pass;
     }
 
-    public User(int id, String phone, String pass, String name) {
-        this.id = id;
+    public User(String phone, String pass, String name, String homeAddress) {
         this.phone = phone;
         this.pass = pass;
         this.name = name;
+        this.homeAddress = homeAddress;
     }
 
     public int getId() {

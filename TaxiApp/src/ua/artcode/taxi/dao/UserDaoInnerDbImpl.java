@@ -38,7 +38,6 @@ public class UserDaoInnerDbImpl implements UserDao {
             }
         }
         return result;
-
     }
 
     @Override
@@ -52,9 +51,7 @@ public class UserDaoInnerDbImpl implements UserDao {
                 throw new UserNotFoundException("User not found");
             }
         }
-
         return result;
-
     }
 
     @Override
@@ -70,7 +67,6 @@ public class UserDaoInnerDbImpl implements UserDao {
                 throw new UserNotFoundException("User not found");
             }
         }
-
        return result;
     }
 
