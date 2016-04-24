@@ -37,12 +37,8 @@ public class UserDaoInnerDbImpl implements UserDao {
                 throw new UserNotFoundException("User not found");
             }
         }
-<<<<<<< HEAD
-        return null;
-
-=======
         return result;
->>>>>>> 03efcd8b6dbee57efd6e382ca0ab7abfb0a0724e
+
     }
 
     @Override
@@ -56,11 +52,9 @@ public class UserDaoInnerDbImpl implements UserDao {
                 throw new UserNotFoundException("User not found");
             }
         }
-<<<<<<< HEAD
-       return null; //return new UserNotFoundException();
-=======
+
         return result;
->>>>>>> 03efcd8b6dbee57efd6e382ca0ab7abfb0a0724e
+
     }
 
     @Override
@@ -76,11 +70,8 @@ public class UserDaoInnerDbImpl implements UserDao {
                 throw new UserNotFoundException("User not found");
             }
         }
-<<<<<<< HEAD
-        //return new UserNotFoundException();
-=======
+
        return result;
->>>>>>> 03efcd8b6dbee57efd6e382ca0ab7abfb0a0724e
     }
 
     @Override

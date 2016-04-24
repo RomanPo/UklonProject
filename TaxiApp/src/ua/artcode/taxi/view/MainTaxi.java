@@ -1,7 +1,10 @@
 package ua.artcode.taxi.view;
 
+import ua.artcode.taxi.exception.UserNotFoundException;
+import ua.artcode.taxi.service.ClientAccesToken;
 import ua.artcode.taxi.service.UserService;
 
+import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -54,7 +57,14 @@ public class MainTaxi extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PassengerRegistration(userService);
+                try {
+                    String accessToken = userService.login(loginText.getText(), passText.getText());
+                    ClientAccesToken.accesTokken = accessToken;
+                } catch (LoginException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                } catch (UserNotFoundException e1) {
+                    e1.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                }
             }
         });
 

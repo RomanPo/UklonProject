@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private GoogleMapsAPI googleMapsAPI = new GoogleMapsAPIImpl();
     private Map<String, User> accessKeys = new HashMap<>();
     private List<String> orederIds = new ArrayList<>();
+    private Clien
 
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(String phone, String pass) throws LoginException {
+    public String login(String phone, String pass) throws LoginException, UserNotFoundException {
 
         User found = userDao.findByPhone(phone);
 
