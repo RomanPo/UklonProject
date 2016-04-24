@@ -99,4 +99,13 @@ public class AppDB {
 
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "AppDB{" +
+                "users=" + users +
+                ", orders=" + orders +
+                ", drivers=" + drivers +
+                '}';
+    }
 }

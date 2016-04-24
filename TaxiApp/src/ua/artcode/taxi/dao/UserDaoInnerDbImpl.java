@@ -32,6 +32,7 @@ public class UserDaoInnerDbImpl implements UserDao {
         for (User user : appDB.getUsers()) {
             if (user.getPhone().equals(phone)) {
                 result =  user;
+                return result;
             }
             else{
                 throw new UserNotFoundException("User not found");

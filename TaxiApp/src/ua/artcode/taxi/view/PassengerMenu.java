@@ -34,6 +34,7 @@ public class PassengerMenu extends JFrame {
     private JButton findLocationButton;
     private JButton searchDriverButton;
     private JButton calculateButton;
+    private JButton cancelButton;
 
     public PassengerMenu(UserService userService){
 
