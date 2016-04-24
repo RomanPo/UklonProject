@@ -4,6 +4,8 @@ import ua.artcode.taxi.service.UserService;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Registration extends JFrame {
 
@@ -31,9 +33,21 @@ public class Registration extends JFrame {
 
         buttonPanel1 = new JPanel(new GridLayout(1,1));
         passengerButton = new JButton("I am passenger");
+        passengerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new PassengerRegistration(userService);
+            }
+        });
 
         buttonPanel2 = new JPanel(new GridLayout(1,1));
         driverButton = new JButton("I am driver");
+        driverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new DriverRegistration(userService);
+            }
+        });
 
         buttonPanel1.add(passengerButton);
         buttonPanel2.add(driverButton);
